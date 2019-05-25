@@ -7,6 +7,16 @@ module.exports = {
     social: {
       twitter: `kylemathews`,
     },
+    menuLinks: [
+      {
+        name:'Home',
+        link:'/'
+      },
+      {
+        name:'About me',
+        link:'/about'
+      },
+    ],
   },
   plugins: [
     {

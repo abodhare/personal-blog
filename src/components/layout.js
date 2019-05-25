@@ -1,7 +1,29 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
+import Menu from "./menu"
 
 import { rhythm, scale } from "../utils/typography"
+
+const Navbar = () => (
+  <StaticQuery
+    query={graphql`
+      query SiteTitleQuery {
+        site {
+          siteMetadata {
+            title
+            menuLinks {
+              name
+              link
+            }
+          }
+        }
+      }
+    `}
+  render = {data => (
+    <Menu menuLinks={data.site.siteMetadata.menuLinks} siteTitle={data.site.siteMetadata.title} />
+  )}
+  />
+)
 
 class Layout extends React.Component {
   render() {
@@ -61,6 +83,7 @@ class Layout extends React.Component {
         }}
       >
         <header>{header}</header>
+        <Navbar />
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
