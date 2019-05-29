@@ -3,9 +3,9 @@ import { Link } from 'gatsby'
 
 const Menu = ({ siteTitle, menuLinks }) => (
   <nav>
-    <ul style={{ display: 'flex', flex: 1, listStyle: 'none' }}>
+    <ul>
       {menuLinks.map(link =>
-        <li key={link.link} style={{marginLeft: '5px', marginRight: '5px'}}>
+        <li key={link.link}>
           <Link to={link.link}>{link.name}</Link>
         </li>
       )}
