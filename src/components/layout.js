@@ -1,8 +1,8 @@
 import React from "react"
-import { Link, StaticQuery, graphql } from "gatsby"
-import Menu from "./menu"
+import { Link, /* StaticQuery, graphql */ } from "gatsby"
+//import Menu from "./menu"
 
-const Navbar = () => (
+/*const Navbar = () => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -21,7 +21,7 @@ const Navbar = () => (
     <Menu menuLinks={data.site.siteMetadata.menuLinks} siteTitle={data.site.siteMetadata.title} />
   )}
   />
-)
+)*/
 
 class Layout extends React.Component {
   render() {
@@ -31,17 +31,24 @@ class Layout extends React.Component {
 
     if (location.pathname === rootPath) {
       header = (
-        <h1><Link to={`/`}>{title}</Link></h1>
+        [
+          <h1 className="hover:bg-purple-700 text-white px-2 py-4 rounded text-3xl font-semibold"><Link to={`/`}>{title}</Link></h1>,
+          <Link to={'/'} className="hover:bg-purple-700 text-white px-2 py-4 rounded">Home</Link>,
+          <Link to={'/about'} className="hover:bg-purple-700 text-white px-2 py-4 rounded">About me</Link>
+        ]
       )
     } else {
       header = (
-        <h3><Link to={`/`}>{title}</Link></h3>
+        [
+          <h3 className="hover:bg-purple-700 text-white px-2 py-4 text-xl rounded font-semibold"><Link to={`/`}>{title}</Link></h3>,
+          <Link to={'/'} className="hover:bg-purple-700 text-white px-2 py-4 rounded">Home</Link>,
+          <Link to={'/about'} className="hover:bg-purple-700 text-white px-2 py-4 rounded">About me</Link>
+        ]
       )
     }
     return (
       <div>
-        <header className="bg-purple-500">{header}</header>
-        <Navbar />
+        <header className="flex bg-purple-600 items-center">{header}</header>
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
